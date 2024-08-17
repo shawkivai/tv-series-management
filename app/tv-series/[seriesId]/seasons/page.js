@@ -28,8 +28,14 @@ export default function SeasonsPage() {
     fetchSeason();
   }, []); // Add seriesId as a dependency
 
-  const deleteSeason = (id) => {
-    setSeason(season.filter((s) => s.id !== id));
+  const deleteSeason = async (id) => {
+    try {
+      await axiosInstance.delete(`/tvseries/${seriesId}/seasons/${id}`);
+      
+      setSeason(season.filter((s) => s._id !== id));
+    } catch (error) {
+      console.error('Error deleting TV series:', error);
+    }
   };
 
   const editSeason = (id) => {

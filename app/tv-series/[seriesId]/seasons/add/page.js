@@ -16,7 +16,7 @@ export default function AddSeasonPage() {
   const addSeason = async () => {
     try {
       const response = await axiosInstance.post(`/tvseries/${seriesId}/seasons`, { seasonNumber, title });
-      router.push('/tv-series');
+      router.push(`/tv-series/${seriesId}/seasons`);
     } catch (error) {
       console.error('Error adding:', error);
     }

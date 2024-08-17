@@ -24,8 +24,7 @@ export default function TvSeriesPage() {
   const deleteSeries = async (id) => {
     try {
       await axiosInstance.delete(`/tvseries/${id}`);
-      setSeries(series.filter((s) => s.id !== id));
-      router.push('/tv-series');
+      setSeries(series.filter((s) => s._id !== id));
        
     } catch (error) {
       console.error('Error deleting TV series:', error);
